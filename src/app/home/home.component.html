@@ -1,0 +1,90 @@
+<!-- coming soon video and caption -->
+<figure class="comingSoon py-4">
+    <video id="myVideo" preload="" autoplay="" [muted]="'muted'" playsinline="" loop="" width="100%" height="100%">
+        <source src="assets/bgVid.mp4" type="video/mp4">
+    </video>
+
+    <figcaption class="content ">
+        <div class="brTitle"></div>
+        <div class="txt">
+            <h3 class="text-center pt-3">COMING SOON </h3>
+            <p>Stay tuned ...</p>
+        </div>
+        <div class="brTitle"></div>
+    </figcaption>
+</figure>
+
+<!-- search input for both Movies&Tv -->
+<div class="searchInput my-4 w-50 m-auto">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+        </div>
+        <input type="text" class="form-control w-50 m-auto" [(ngModel)]="term"
+            placeholder="Trending Movies & Tv Search">
+    </div>
+    <!-- [(ngModel)]="term" two way data binding related to search pipe -->
+</div>
+
+<!-- Trending Movies -->
+<section class="trendingMovies">
+    <header class="title py-4">
+        <div class="brTitle w-25"></div>
+        <h1 class="text-center pt-3">Trending Movies to Watch Now</h1>
+        <p>most watched Movies this week</p>
+        <div class="brTitle w-50"></div>
+    </header>
+
+    <div class="row pb-5 text-center">
+        <!-- call search pipe and send the term that entered in search input -->
+        <ng-container *ngIf="( trendingMovies|search:term) as result">
+
+            <div *ngFor="let movie of result" class="col-lg-3 col-md-4 col-sm-6 p-4">
+                <div class="box position-relative" [routerLink]="['/moviedetails',movie.id]">
+                    <img class="w-100" [src]="imgPrefix+movie?.poster_path" alt="{{movie?.title}}"
+                        onerror="this.onerror=null;this.src='assets/Image-Not-Available.png';">
+                    <h2 class="p-3">{{movie?.title}}{{movie?.name}}</h2>
+                    <div class="rate">{{movie?.vote_average}}</div>
+                </div>
+            </div>
+
+            <div *ngIf="result.length === 0" class="noResult">
+                <img src="assets/no_movies_found.svg" class="img-fluid mt-4" alt="">
+                <p class="errMsg mt-3" >No Movies Matched your Search <i class="far fa-frown"></i>
+                </p>
+            </div>
+        </ng-container>
+    </div>
+</section>
+
+<!-- Trending TV -->
+<section class="trendingTv">
+    <header class="title">
+        <div class="brTitle w-25"></div>
+        <h1 class="text-center pt-3">Trending TV to Watch Now</h1>
+        <p>most watched series this week</p>
+        <div class="brTitle"></div>
+    </header>
+
+    <div class="row py-5 text-center">
+
+        <ng-container *ngIf="( trendingTv|search:term) as result">
+
+            <div *ngFor="let tv of result" class="col-lg-3 col-md-4 col-sm-6 p-4">
+                <div class="box position-relative" [routerLink]="['/tvdetails',tv.id]">
+                    <img class="w-100" [src]="imgPrefix+tv?.poster_path" alt="{{tv?.title}}"
+                        onerror="this.onerror=null;this.src='assets/Image-Not-Available.png';">
+                    <h2 class="p-3">{{tv?.title}}{{tv?.name}}</h2>
+                    <div class="rate">{{tv?.vote_average}}</div>
+                </div>
+            </div>
+
+            <div *ngIf="result.length === 0" class="noResult">
+                <img src="assets/no_movies_found.svg" class="img-fluid mt-4" alt="">
+                <p class="errMsg mt-3">No Series Matched your Search <i class="far fa-frown"></i>
+                </p>
+            </div>
+        </ng-container>
+
+    </div>
+</section>

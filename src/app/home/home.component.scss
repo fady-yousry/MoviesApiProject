@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+.comingSoon
+{
+  position: relative;
+}
+@keyframes vid
+{
+  0%{opacity: 0;}
+  25%{opacity: 0;}
+  50%{opacity: 0;}
+  75%{opacity: 0;}
+  100%{opacity: 1;}
+}
+figure video 
+{
+  min-width: 100%;
+  min-height: 100%;
+  box-shadow: 0px 2px 36px -1px rgba(181,21,21,0.75);
+  -webkit-box-shadow: -2px 2px 36px -1px rgba(181,21,21,0.75);
+  -moz-box-shadow: -2px 2px 36px -1px rgba(181,21,21,0.75);
+  animation: vid 3s ease-in-out ;
+}
+figcaption
+{
+  position: absolute;
+  width: 100% !important;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+figcaption p /*stay tuned... */
+{
+  font-family: 'Indie Flower', cursive;
+  color: white;
+}
+
+/*figcaption text animation*/
+@keyframes text 
+{
+  0%{opacity: 1;transform: scale(0);}
+  100%{opacity: 0.3;transform: scale(3);}
+}
+figcaption .txt  /*figcaption text animation behavior*/
+{
+  animation: text 3s ease-in-out ;
+  opacity: 0.3;
+  transform: scale(3);
+}
+@keyframes br
+{
+  0%{width: 0%;opacity: 1;}
+  100%{width: 30%;opacity: 0.3;}
+}
+.brTitle
+{
+  animation: br 4s ease-in-out ;
+  opacity: 0.2;
+}
+
+//media query to remove animation at media screen max-width:800px
+@media screen and (max-width:800px)
+{
+  .content .txt 
+  {
+    transform: none;
+    animation: none;
+  }
+  .brTitle
+  {
+    animation: none;
+  }
+  figure video 
+
+  {
+    animation: none;
+  }
+}

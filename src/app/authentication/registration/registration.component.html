@@ -1,0 +1,82 @@
+<section class=" mt-5">
+    <form [formGroup]='registerForm' (ngSubmit)='submit(registerForm)' class="w-75 m-auto">
+        <div class="register rounded-lg p-5">
+
+            <div class="row py-2">
+                <div class="col">
+                    <div class="firstName">
+                        <label>First Name :</label>
+                        <input type="text" class="form-control" formControlName='first_name'>
+                        <div class="error"
+                            *ngIf="registerForm.get('first_name')?.errors&&registerForm.get('first_name')?.dirty">
+                            <p *ngIf="registerForm.get('first_name')?.errors?.required">- First Name is Required -</p>
+                            <p *ngIf="registerForm.get('first_name')?.errors?.minlength">- First Name minimum length is
+                                3 characters -</p>
+                            <p *ngIf="registerForm.get('first_name')?.errors?.maxlength">- First Name maximum length is 10
+                                characters -</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="lastName">
+                        <label>Last Name :</label>
+                        <input type="text" class="form-control" formControlName='last_name'>
+                        <div class="error"
+                            *ngIf="registerForm.get('last_name')?.errors&&registerForm.get('last_name')?.dirty">
+                            <p *ngIf="registerForm.get('last_name')?.errors?.required">- Last Name is Required -</p>
+                            <p *ngIf="registerForm.get('last_name')?.errors?.minlength">- Last Name minimum length is 3
+                                characters -</p>
+                            <p *ngIf="registerForm.get('last_name')?.errors?.maxlength">- Last Name maximum length is 10
+                                characters -</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="age w-50 m-auto py-2">
+                <label>Age :</label>
+                <input type="number" class="form-control" formControlName='age'>
+                <div class="error" *ngIf="registerForm.get('age')?.errors&&registerForm.get('age')?.dirty">
+                    <p *ngIf="registerForm.get('age')?.errors?.required">- Age is Required -</p>
+                    <p *ngIf="registerForm.get('age')?.errors?.min">- min age is 18 years old -</p>
+                    <p *ngIf="registerForm.get('age')?.errors?.max">- max age is 80 years old -</p>
+                </div>
+            </div>
+
+            <div class="email py-2">
+                <label>Email :</label>
+                <input type="text" class="form-control" formControlName='email'>
+                <div class="error" *ngIf="registerForm.get('email')?.errors&&registerForm.get('email')?.dirty">
+                    <p *ngIf="registerForm.get('email')?.errors?.required">- Email is Required -</p>
+                    <p *ngIf="registerForm.get('email')?.errors?.email">- Please enter a valid email -</p>
+                </div>
+            </div>
+
+
+            <div class="password py-2">
+                <label>Password :</label>
+
+                <div class="input-group mb-3">
+                    <input id="password" type="password" class="form-control" formControlName='password'>
+
+                    <div class="passTgl input-group-text" (click)="PassToggle()"><i *ngIf="show;else hide"
+                            class="fas fa-eye"></i>
+                        <ng-template #hide><i class="fas fa-eye-slash text-dark"></i></ng-template>
+                    </div>
+                </div>
+                <div class="error" *ngIf="registerForm.get('password')?.errors&&registerForm.get('password')?.dirty">
+                    <p *ngIf="registerForm.get('password')?.errors?.required">- Password is Required -</p>
+                    <p *ngIf="registerForm.get('password')?.errors?.pattern">- Password must start with at least one
+                        letter (A-Z or a-z) then form 7 to 10 (numbers/letters/special characters) -</p>
+                </div>
+            </div>
+
+            <button class="btn btn-block w-50 m-auto" type="submit" [disabled]='registerForm.invalid'>Register</button>
+
+            <div class="registerError">
+                <p class="text-center">{{error}}</p>
+            </div>
+
+        </div>
+    </form>
+</section>

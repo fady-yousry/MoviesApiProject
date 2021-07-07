@@ -1,1 +1,398 @@
-/* You can add global styles to this file, and also import other style files */
+/* global styling*/
+@import url('https://fonts.googleapis.com/css2?family=Denk+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,900&display=swap');
+
+//global body styling
+html 
+{ 
+    height: 100%; 
+}
+body 
+{
+    min-height:100%; 
+    position:relative; 
+    padding-bottom:50px;
+    font-size: 12px;
+    line-height: 1.3;
+    font-family: 'Montserrat', sans-serif !important;
+    color: #FFF;
+    background: url(../src/assets/body-bg.gif) !important;
+}
+footer 
+{ 
+    position: absolute; 
+    left: 0 ; right: 0; bottom: 0; 
+    height:40px;
+}
+img /*to unify on error images "img not found" size with other images from api*/
+{
+    aspect-ratio: 2/3;
+}
+p /*golbal p*/
+{
+    color:#aaa;
+    text-align: center;
+    font-size: 1rem;
+}
+
+//-------------------- start of (home/movies/tv/stars) component styling --------------------------
+.rate /*the rate box that contain the movie or tv rate on the top right of poster*/
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #3EB595;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border-top-right-radius: 30% ;
+    border-bottom-right-radius: 10%;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+}
+figcaption h3,.title h1 /*h1 headers of home/movies/tv/stars components && h3 "coming soon" in home*/
+{
+    font-family: 'Denk One', sans-serif;
+    font-size: 2.5rem;
+    color:#730202;
+}
+.brTitle /*div that have hr effect*/
+{
+    height: 1px;
+    margin: auto;
+    width: 30%;
+    background-color: gray; 
+}
+.box /*the div that contains posterImage/title/rate in home/movies/tv/stars Components*/
+{
+    cursor: pointer;
+    transition: all  1s;
+}
+.box:hover
+{
+    box-shadow: -2px 2px 36px -1px rgba(181,21,21,0.75);
+    -webkit-box-shadow: -2px 2px 36px -1px rgba(181,21,21,0.75);
+    -moz-box-shadow: -2px 2px 36px -1px rgba(181,21,21,0.75);
+    border-radius: 20px;
+    transform: translateY(-5px); 
+}
+.box img /*posterImage in home/movies/tv/star components */
+{
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.box h2 /*movie/tv/star "name" under the posterImage in home/movies/tv/star components*/
+{
+    background-color: rgb(50, 50, 50);
+    color: #3EB595;
+    transition: all  1s;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.searchInput input /*search input*/
+{
+    background-color: rgba(64, 56, 56, 0.4) !important;
+    color: #fff !important;
+}
+.searchInput .form-control:focus 
+{
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(248, 66, 66, 0.6);  
+    border: 2px solid #d91d2a;
+}
+.noResult
+{
+    font-size: 1.3rem;
+    margin: auto;
+    padding-bottom: 30px;
+}
+
+//---------- end of home / movies / tv / stars ------------
+
+//-----------start of details styling (movieDetails/tvDetails/starDetails) Component-----------
+.detailsTitle h1 /*movieDetails/tvDetails/starDetails header h1*/
+{
+    font-size: 1.6rem;
+    font-weight: bolder;
+    color: #BFAB49;
+    text-align: center;
+}
+.detailsTitle p /*header tagline*/
+{
+    font-size: 15px;
+    color: silver;
+}
+.detailsImage /*movieDetails/tvDetails/starDetails poster Image */
+{
+    box-shadow: 0px 0px 18px 1px rgba(232,232,117,0.75);
+    -webkit-box-shadow: 0px 0px 18px 1px rgba(232,232,117,0.75);
+    -moz-box-shadow: 0px 0px 18px 1px rgba(232,232,117,0.75);;
+    border-radius: 20px;
+}
+
+/*carousel styling (movieDetails/tvDetails/starDetails) Component*/
+.slideContent 
+{
+    cursor: pointer;
+}
+.slideContent img
+{
+    border-radius: 20px;
+    box-shadow: 7px 4px 2px 0px rgba(122,109,109,0.75);
+    -webkit-box-shadow: 7px 4px 2px 0px rgba(122,109,109,0.75);
+    -moz-box-shadow: 7px 4px 2px 0px rgba(122,109,109,0.75);
+    border: 3px solid rgb(105, 102, 102);
+    max-width: 200px;
+    max-height: 300px;
+    margin: auto;
+}
+.slideContent h3
+{
+    color: silver;
+    font-size: 1rem;
+    height: 65px;
+}
+
+/*iframe that display the official trailer in movieDetails/tvDetails components*/
+iframe 
+{
+    min-width: 100%;
+    min-height: 100%;
+    box-shadow: 0px 0px 18px 5px rgba(112,98,98,0.57);
+    -webkit-box-shadow: 0px 0px 18px 5px rgba(112,98,98,0.57);
+    -moz-box-shadow: 0px 0px 18px 5px rgba(112,98,98,0.57);
+}
+
+// " trailer cast overview biography starMovies " headings h2 
+.trailer h2,.cast h2,.overView h2,.biography h2,.starMovies h2
+{
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: rgb(196, 193, 124);
+    text-align: left;
+}
+.overView p /*overview description*/
+{
+    font-size: 15px;
+}
+.detailsInfo h2 /*rate/releaseDate/category/birthday/placeOfBirth headers h2*/
+{
+    font-size: 1.1rem;
+    display: inline;
+    color: #fff;
+}
+.detailsInfo p /*rate/releaseDate/category/birthday/placeOfBirth content*/
+{
+    font-size: 1rem;
+    color: silver;
+    display: inline;
+}
+.detailsInfo i /*rate star icon*/
+{
+    font-size: 14px;
+}
+.imdbBtn a,.officialWebsite a /*imdb & officialWebsite buttons*/
+{
+    color: black !important;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.imdbBtn a:hover,.officialWebsite a:hover
+{
+    text-decoration: none;
+}
+.imdbBtn,.officialWebsite
+{
+    background-color: rgb(184, 180, 53);
+    text-align: center;
+    border-radius: 10px;
+    transition: 400ms;
+    font-family: 'Denk One', sans-serif;
+}
+.imdbBtn:hover,.officialWebsite:hover
+{
+    transform: translateY(-1px); 
+    background-color: rgb(213, 207, 41);
+}
+//-----------end of details styling (movieDetails/tvDetails/starDetails) Component-----------
+
+
+// ngx-pagination styling 
+.my-pagination .ngx-pagination .current 
+{
+    background: #3EB595;
+    text-align: right;
+}
+  .ngx-pagination
+{
+    text-align: right;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 20px;
+}
+  .ngx-pagination li a
+{
+    color: #fff !important;
+}
+  .ngx-pagination li a:hover 
+{
+    color: black !important;
+}
+
+//media query
+@media screen and (max-width:992px)
+{
+    .searchInput
+    {
+        width: 75% !important;
+    }
+    .slideContent h3
+    {
+        font-size: 14px;
+        height: 100px;
+    } 
+    .detailsInfo h2 
+    {
+        font-size: 16px;
+    }
+    .detailsInfo p 
+    {
+        font-size:15px;
+    }
+}
+
+@media screen and (max-width:768px)
+{
+    .searchInput
+    {
+        width: 100% !important;
+    }
+    .slideContent h3
+    {
+        font-size: 14px;
+        height: 100px;
+    } 
+    .my-pagination .ngx-pagination .current 
+    {
+        text-align: center;
+    }
+      .ngx-pagination
+    {
+        text-align: center;
+        font-size: 14px;
+        padding: 10px;
+    }
+    .trailer h2,.cast h2,.overView h2,.biography h2,.starMovies h2
+    {
+        text-align: center;
+    }
+
+    .overView p ,.biography p
+    {
+        text-align: center !important;
+    }
+    .detailsImage 
+    {
+        width: 50% !important;
+        margin: auto;
+        height: 400px !important;
+    }
+}
+
+@media screen and (max-width:576px)
+{ 
+    p
+    {
+        font-size: 12px;
+    }
+    .col-md-7 
+    {
+        padding: 0 !important;
+    }
+    figcaption h3,.title h1
+    {
+        font-family: 'Denk One', sans-serif;
+        font-size: 1.5rem;
+        color:#730202;
+    }
+    .box h2 
+    {
+        font-size: 1.1rem; 
+    }
+    .searchInput
+    {
+        width: 100% !important;
+    }
+    .noResult
+    {
+        font-size: 1rem;
+    }
+    .detailsTitle h1 
+    {
+        font-size: 1.4rem;
+    }
+    .detailsTitle p 
+    {
+        font-size: 14px;
+    }
+    .slideContent h3
+    {
+        font-size: 14px;
+        height: 100px;
+    }    
+    .trailer h2,.cast h2,.overView h2,.biography h2,.starMovies h2
+    {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .overView p ,.biography p
+    {
+        font-size: 13px;
+        text-align: center !important;
+    }
+    .detailsInfo h2 
+    {
+        font-size: 15px;
+    }
+    .detailsInfo p 
+    {
+        font-size:13px;
+    }
+    .detailsInfo i,.imdbBtn a,.officialWebsite a
+    {
+        font-size: 14px;
+    }
+    .my-pagination .ngx-pagination .current 
+    {
+        text-align: center;
+    }
+      .ngx-pagination
+    {
+        text-align: center;
+        font-weight: bold;
+        font-size: 11px;
+        padding: 1px;
+    }
+    footer h6
+    {
+        font-size: 11px !important;
+    }
+    .brFooter
+    {
+        width: 80% !important;
+    }
+    .detailsImage 
+    {
+        width: 70% !important;
+        margin: auto;
+        height: 400px !important;
+    }
+}
+
+
+
+

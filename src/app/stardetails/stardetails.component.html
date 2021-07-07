@@ -1,0 +1,59 @@
+<section class="tvDetails container py-5">
+    <div class="row">
+        <div class="col-md-4 text-center pt-2">
+
+            <!-- Star Name -->
+            <header class="detailsTitle pb-3">
+                <h1>{{starDetails?.name}}</h1>
+            </header>
+
+            <!-- Star Profile Picture & on error display the not found Image -->
+            <figure class="poster">
+                <img [src]="imgPrefix+starDetails?.profile_path" class="w-100 detailsImage"
+                    alt="{{starDetails?.name}}"
+                    onerror="this.onerror=null;this.src='assets/Image-Not-Available.png';">
+            </figure>
+
+            <!-- series details : birthday /Place of Birth / imdb profile -->
+            <aside class="detailsInfo pt-2">
+                <div *ngIf="starDetails?.birthday" class="brithday py-1">
+                    <h2>Birthday : </h2>
+                    <p> {{starDetails?.birthday}}</p>
+                </div>
+                <div *ngIf="starDetails?.place_of_birth" class="placeOfBirth py-1">
+                    <h2 class="d-block">Place of Birth <i class="fas fa-map-marker-alt"></i></h2>
+                    <p>" {{starDetails?.place_of_birth}} "</p>
+                </div>
+                <div class="imdbBtn mt-2 w-75 mx-auto">
+                    <a class="d-block" target="_blank"
+                        href='{{"https://www.imdb.com/name/" +starDetails?.imdb_id+ "/?ref_=tt_cl_t1"}}'>IMDB</a>
+                </div>
+            </aside>
+        </div>
+        <div class="col-md-1"></div>
+        <article class="col-md-7 text-center py-5">
+
+            <!-- Biography -->
+            <div *ngIf="starDetails?.biography" class="biography pt-5 text-left">
+                <h2>Biography :</h2>
+                <p class="text-left">{{starDetails?.biography}}
+                <p>
+            </div>
+
+            <!-- star Movies Carousel using ngx-owl-carousel-o -->
+            <div class="starMovies py-3">
+                <h2 class="py-3">{{starDetails?.name}} Movies </h2>
+                <owl-carousel-o [options]="customOptions">
+                    <ng-template carouselSlide *ngFor="let movie of starMovies">
+                        <div class="slideContent text-center" [routerLink]="['/moviedetails',movie?.id]">
+                            <img class="img-fluid" [src]="imgPrefix+movie?.poster_path" [alt]="movie?.name"
+                                onerror="this.onerror=null;this.src='assets/Image-Not-Available.png';">
+                            <h3 class="p-3">{{movie.title}}{{movie.name}}</h3>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+
+        </article>
+    </div>
+</section>

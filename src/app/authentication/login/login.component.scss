@@ -1,0 +1,81 @@
+.login
+{
+    box-shadow: 0px 0px 8px 3px rgba(62,181,149,0.75);
+    -webkit-box-shadow: 0px 0px 8px 3px rgba(62,181,149,0.75);
+    -moz-box-shadow: 0px 0px 8px 3px rgba(62,181,149,0.75);
+}
+label
+{
+    font-size: 1rem;
+    font-weight: 700;
+}
+.login input
+{
+    background-color: transparent;
+    border: 2px solid gray ;
+    color: white;
+}
+.login .form-control:focus 
+{
+    border: 3px solid #3EB595 ;
+    box-shadow:none;
+}
+.password
+{
+    margin: 15px 0px 30px 0px !important;
+}
+.registerNow a
+{
+    color:#3EB595 ;
+    font-size: 1rem;
+    font-weight: bold;
+}
+button
+{
+    background-color:#3EB595 ;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+button:hover:disabled
+{
+color: white;
+}
+.error p,.loginError p
+{
+    padding: 10px 0px;
+    color: #d91d2a;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.passToggle
+{
+    font-size: 1rem;
+}
+.password .passTgl
+{
+    width: 50px;
+    cursor: pointer;
+    background-color:#3EB595 ;
+    color: white;
+}
+.password i
+{
+    background-color:#3EB595 ;
+}
+@media (max-width: 575.98px) 
+{
+    form
+    {
+    width: 100% !important;
+    }
+    .error p,.loginError p
+    {
+        padding: 10px 0px;
+        color: #d91d2a;
+        text-align: left;
+        font-size: 12px;
+        font-weight: 500;
+    }
+}

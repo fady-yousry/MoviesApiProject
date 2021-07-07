@@ -1,0 +1,86 @@
+<section class="tvDetails container py-5">
+    <div class="row">
+        <div class="col-md-4 text-center pt-2">
+
+            <!-- title and the caption of the series -->
+            <header class="detailsTitle pb-3">
+                <h1>{{tvDetails?.title}}{{tvDetails?.name}}</h1>
+                <p *ngIf="tvDetails?.tagline">"{{tvDetails?.tagline}}"</p>
+            </header>
+
+            <!-- tv Poster & on error display the not found Image -->
+            <figure class="poster">
+                <img [src]="imgPrefix+tvDetails?.poster_path" class="w-100 detailsImage"
+                    alt="{{tvDetails?.title}}{{tvDetails?.name}}"
+                    onerror="this.onerror=null;this.src='assets/Image-Not-Available.png';">
+            </figure>
+
+            <!-- series details : Rate /category / officialWebsite / seasons -->
+            <aside class="detailsInfo pt-2">
+                <div *ngIf="tvDetails?.vote_average" class="voteAvg py-1">
+                    <h2>Rate |</h2>
+                    <p> {{tvDetails?.vote_average}} <i class="far fa-star"></i></p>
+                </div>
+                <div class="category py-2">
+                    <h2 class="d-block">| Category |</h2>
+                    <p *ngFor="let genre of genres" class="h6 d-inline px-2 text-white-50"> {{genre.name}}</p>
+                </div>
+                <div *ngIf="tvDetails?.homepage" class="officialWebsite my-3 w-75 mx-auto">
+                    <a href="{{tvDetails?.homepage}}" target="_blank">Official Website</a>
+                </div>
+                <div class="seasons">
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-template carouselSlide *ngFor="let season of seasons">
+                            <div class="slideContent text-center p-2">
+                                <img class="img-fluid mb-2" [src]="imgPrefix+season?.poster_path" [alt]="season?.name"
+                                    onerror="this.onerror=null;this.src='assets/Image-Not-Available.png';">
+                                <h6>Season {{season?.season_number}}</h6>
+                                <p>{{season?.episode_count}} Episodes</p>
+                            </div>
+                        </ng-template>
+                    </owl-carousel-o>
+                </div>
+            </aside>
+        </div>
+        <div class="col-md-1"></div>
+        <article class="col-md-7 text-center py-5">
+
+            <!-- overView -->
+            <div *ngIf="tvDetails?.overview" class="overView text-left pt-4">
+                <h2>OverView</h2>
+                <p class="text-left">{{tvDetails?.overview}}
+                </p>
+            </div>
+
+            <!--Offical Trailer iframe using safeUrl pipe 
+                to avoid ERROR : unsafe value used in a resource URL context-->
+            <div class="trailer py-3">
+                <h2 class="py-3">Official Trailer</h2>
+                <div *ngFor='let k of keys'>
+                    <iframe *ngIf="videos!=0" width="100%" height="400" [src]="tubePrefix+k.key|safeUrl"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div *ngIf="videos==0">
+                    <p>No Trailers Available for this series</p>
+                </div>
+                <div class="brTitle mt-2"></div>
+            </div>
+
+            <!-- Cast Carousel using ngx-owl-carousel-o -->
+            <div class="cast py-3">
+                <h2 class="py-3">Cast</h2>
+                <owl-carousel-o [options]="customOptions">
+                    <ng-template carouselSlide *ngFor="let star of cast">
+                        <div class="slideContent text-center" [routerLink]="['/stardetails',star.id]">
+                            <img class="img-fluid" [src]="imgPrefix+star?.profile_path" [alt]="star?.name"
+                                onerror="this.onerror=null;this.src='assets/Image-Not-Available.png';">
+                            <h3 class="p-3">{{star?.name}}</h3>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+        </article>
+    </div>
+</section>

@@ -1,0 +1,45 @@
+<section class="stars">
+
+    <header class="title py-4">
+        <div class="brTitle w-25"></div>
+        <h1 class="text-center pt-3">Top Rated Stars</h1>
+        <p>find your favourite star</p>
+        <div class="brTitle w-50"></div>
+    </header>
+
+    <!-- search input for both Movies&Tv -->
+    <div class="searchInput my-4 w-50 m-auto">
+        <div class="input-group my-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control w-50 m-auto" [(ngModel)]="term" placeholder="Stars Search">
+        </div>
+        <!-- [(ngModel)]="term" two way data binding related to search pipe -->
+    </div>
+
+    <div class="row text-center">
+        <ng-container *ngIf="( stars|search:term) as result">
+
+            <div *ngFor="let star of result|paginate: { itemsPerPage: 24, currentPage: currentPage,totalItems:result.length }"
+                class="col-lg-2 col-md-3 col-sm-6  p-4">
+                <div class="box position-relative" [routerLink]="['/stardetails',star.id]">
+                    <img class="w-100" [src]="imgPrefix+star?.profile_path" alt=""
+                        onerror="this.onerror=null;this.src='assets/Image-Not-Available.png';">
+                    <h2 class="p-3">{{star?.name}}</h2>
+                </div>
+            </div>
+
+             <!-- if no results found -->
+            <div *ngIf="result.length === 0" class="noResult">
+                <img src="assets/noResult.png" class="img-fluid py-4" alt="">
+                <p class="errMsg">No Stars Matched your Search <i class="far fa-frown"></i>
+                </p>
+            </div>
+            <!-- if results.length <18 hide paginatoin bar -->
+            <pagination-controls *ngIf="result.length>24" class="my-pagination w-100"
+                (pageChange)="onPageChange($event)">
+            </pagination-controls>
+        </ng-container> 
+    </div>
+</section>
